@@ -4,9 +4,9 @@ use std::env;
 fn main() {
     dotenv().ok();
 
-    let test_var = env::var("TESTVAR").expect("Please set TESTVAR");
-    let test_var2 = env::var("TESTVAR2").expect("Please set TESTVAR2");
+    let api_key = env::var("API_KEY").expect("Please set API_KEY");
+    let api_key_secret = env::var("API_KEY_SECRET").expect("Please set API_KEY_SECRET");
 
-    println!("{}", test_var);
-    println!("{}", test_var2);
+    println!("{}", api_key);
+    println!("{}", api_key_secret);
 }
