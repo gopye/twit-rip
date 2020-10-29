@@ -9,6 +9,8 @@ mod common;
 
 use egg_mode;
 use egg_mode::user;
+use egg_mode::search::{self, ResultType};
+use std::io::{stdin, BufRead};
 // use std;
 // use std::io::{Read, Write};
 use tokio;
@@ -37,8 +39,7 @@ async fn main() {
     println!("Heterogeneous multi-user lookup:");
 
     let mut users: Vec<egg_mode::user::UserID> = vec![];
-    // users.push(config.user_id.into());
-    users.push("SwiftOnSecurity".into());
+    users.push("KNeferhetep".into());
 
         for user in user::lookup(users, &config.token)
         .await
@@ -47,6 +48,23 @@ async fn main() {
         .iter()
     {
         print_user(user)
+    }
+
+    println!("Search term:");
+    let line = stdin().lock().lines().next().unwrap().unwrap();
+
+    println!("\n");
+
+    let search = search::search(line)
+        .result_type(ResultType::Recent)
+        .count(10)
+        .call(&config.token)
+        .await
+        .unwrap();
+
+    for tweet in &search.statuses {
+        common::print_tweet(tweet);
+        println!()
     }
 }
 
