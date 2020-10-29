@@ -53,7 +53,6 @@ impl Config {
         let username: String;
         let token: egg_mode::Token;
 
-        //look at all this unwrapping! who told you it was my birthday?
         if let Ok(mut f) = std::fs::File::open("twitter_settings") {
             f.read_to_string(&mut config).unwrap();
 
