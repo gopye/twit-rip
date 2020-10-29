@@ -18,21 +18,6 @@ use tokio;
 
 #[tokio::main]
 async fn main() {
-
-    // let access_token = env::var("ACCESS_TOKEN").expect("Please set ACCESS_TOKEN");
-    // let access_token_secret = env::var("ACCESS_TOKEN_SECRET").expect("Please set ACCESS_TOKEN_SECRET");
-
-    // let con_token = egg_mode::KeyPair::new(api_key, api_key_secret);
-    // let egg_access_token = egg_mode::KeyPair::new(access_token, access_token_secret);
-    // let token = egg_mode::Token::Access {
-        // consumer: con_token,
-        // access: egg_access_token,
-    // };
-
-    // let rustlang = egg_mode::user::show("rustlang", &token).await.unwrap();
-
-    // println!("{} (@{})", rustlang.name, rustlang.screen_name);
-
     let config = common::Config::load().await;
 
     println!("");
